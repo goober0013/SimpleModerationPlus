@@ -1,0 +1,46 @@
+name: ModerationPlus
+main: io.github.goober0013.moderationplus.ModerationPlus
+version: "1.1"
+authors:
+  - goober0013
+website: https://goober0013.github.io
+api-version: "1.21"
+
+dependencies:
+  server:
+    WorldEdit:
+      load: BEFORE
+      required: true
+      join-classpath: true
+    WorldGuard:
+      load: BEFORE
+      required: true
+      join-classpath: true
+
+permissions:
+  moderationplus.ban:
+    default: op
+  moderationplus.unban:
+    default: op
+  moderationplus.mute:
+    default: op
+  moderationplus.unmute:
+    default: op
+  moderationplus.warn:
+    default: op
+  moderationplus.kick:
+    default: op
+  moderationplus.jail:
+    default: op
+  moderationplus.unjail:
+    default: op
+  moderationplus.setjail:
+    default: op
+  moderationplus.viewactions:
+    default: op
+  moderationplus.notify:
+    description: Receive moderation notifications
+    default: op
+  moderationplus.exempt:
+    description: Exempt from moderation
+    default: op
