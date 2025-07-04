@@ -1,6 +1,6 @@
 name: ModerationPlus
 main: io.github.goober0013.moderationplus.ModerationPlus
-version: "1.1"
+version: "2.0"
 authors:
   - goober0013
 website: https://goober0013.github.io
@@ -10,12 +10,15 @@ dependencies:
   server:
     WorldEdit:
       load: BEFORE
-      required: true
+      required: false
       join-classpath: true
     WorldGuard:
       load: BEFORE
-      required: true
+      required: false
       join-classpath: true
+    Vault:
+      load: BEFORE
+      required: false
 
 permissions:
   moderationplus.ban:
