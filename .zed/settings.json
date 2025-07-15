@@ -1,0 +1,43 @@
+// Folder-specific settings
+//
+// For a full list of overridable settings, and general information on folder-specific settings,
+// see the documentation: https://zed.dev/docs/configuring-zed#settings-files
+{
+  "languages": {
+    "Groovy": {
+      // Ensure the community Groovy extension is active
+      "language_servers": ["groovy"],
+
+      // Configure how to launch your Groovy LS
+      "binary": {
+        "path": "/home/goob/Documents/Java/groovy-language-server.sh",
+        "arguments": [],
+        "env": {}
+      }
+    }
+  },
+  "lsp": {
+    "jdtls": {
+      "settings": {
+        "java": {
+          "java.home": "/home/goob/Documents/Java/graal21",
+          "home": "/home/goob/Documents/Java/graal21",
+          "errors": {
+            "incompleteClasspath": {
+              "severity": "warning"
+            }
+          }
+        }
+      }
+    },
+    "groovy": {
+      "binary": {
+        "path": "/home/goob/Documents/Java/groovy-language-server.sh",
+        "arguments": []
+      },
+      "command": ["/home/goob/Documents/Java/groovy-language-server.sh"],
+      "args": [],
+      "env": {}
+    }
+  }
+}
