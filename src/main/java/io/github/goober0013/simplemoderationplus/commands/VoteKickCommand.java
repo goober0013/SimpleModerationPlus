@@ -52,7 +52,7 @@ public class VoteKickCommand {
                                     s
                                         .getSender()
                                         .hasPermission(
-                                            "moderationplus.votekick"
+                                            "simplemoderationplus.votekick"
                                         )
                                 )
                             )
@@ -231,7 +231,7 @@ public class VoteKickCommand {
             () -> {
                 final boolean exempt = ProfilePermissions.playerHas(
                     profile,
-                    "moderationplus.exempt"
+                    "simplemoderationplus.exempt"
                 );
 
                 SimpleModerationPlus.scheduler.runTask(
@@ -291,7 +291,9 @@ public class VoteKickCommand {
                         }
 
                         // Check the cooldown (if sender is not exempt)
-                        if (!sender.hasPermission("moderationplus.exempt")) {
+                        if (
+                            !sender.hasPermission("simplemoderationplus.exempt")
+                        ) {
                             if (
                                 CommandCooldown.isOnCooldown(
                                     sender,
@@ -311,9 +313,6 @@ public class VoteKickCommand {
 
                                 return;
                             }
-
-                            // Set the cooldown
-                            CommandCooldown.setCooldown(sender, "vk");
                         }
 
                         // Confirm to start the votekick
@@ -333,6 +332,9 @@ public class VoteKickCommand {
                             );
                             return;
                         }
+
+                        // Set the cooldown
+                        CommandCooldown.setCooldown(sender, "vk");
 
                         VoteKickManager.startVoteKick(offline, sender, reason);
                         VoteKickManager.addVote(offline, sender);

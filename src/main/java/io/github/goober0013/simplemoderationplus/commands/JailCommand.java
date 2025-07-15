@@ -184,7 +184,7 @@ public class JailCommand {
                 () -> {
                     final boolean exempt = ProfilePermissions.playerHas(
                         profile,
-                        "moderationplus.exempt"
+                        "simplemoderationplus.exempt"
                     );
 
                     SimpleModerationPlus.scheduler.runTask(
@@ -228,7 +228,7 @@ public class JailCommand {
                             if (
                                 exempt &&
                                 !sender.hasPermission(
-                                    "moderationplus.bypassexempt"
+                                    "simplemoderationplus.bypassexempt"
                                 )
                             ) {
                                 sender.sendMessage(

@@ -105,7 +105,7 @@ public class KickCommand {
                 () -> {
                     final boolean exempt = ProfilePermissions.playerHas(
                         profile,
-                        "moderationplus.exempt"
+                        "simplemoderationplus.exempt"
                     );
 
                     SimpleModerationPlus.scheduler.runTask(
@@ -132,7 +132,7 @@ public class KickCommand {
                             if (
                                 exempt &&
                                 !sender.hasPermission(
-                                    "moderationplus.bypassexempt"
+                                    "simplemoderationplus.bypassexempt"
                                 )
                             ) {
                                 sender.sendMessage(
