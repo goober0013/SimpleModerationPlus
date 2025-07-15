@@ -8,6 +8,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.github.goober0013.simplemoderationplus.SimpleModerationPlus;
 import io.github.goober0013.simplemoderationplus.api.CommandConfirmation;
+import io.github.goober0013.simplemoderationplus.api.CommandCooldown;
 import io.github.goober0013.simplemoderationplus.api.CommandFeedback;
 import io.github.goober0013.simplemoderationplus.api.MessageProperties;
 import io.github.goober0013.simplemoderationplus.api.ModerationLogger;
@@ -287,6 +288,32 @@ public class VoteKickCommand {
                                 )
                             );
                             return;
+                        }
+
+                        // Check the cooldown (if sender is not exempt)
+                        if (!sender.hasPermission("moderationplus.exempt")) {
+                            if (
+                                CommandCooldown.isOnCooldown(
+                                    sender,
+                                    "vk",
+                                    60000
+                                )
+                            ) {
+                                sender.sendMessage(
+                                    MessageProperties.getRed(
+                                        "command.error.cooldown",
+                                        sender,
+                                        profile,
+                                        null,
+                                        reason
+                                    )
+                                );
+
+                                return;
+                            }
+
+                            // Set the cooldown
+                            CommandCooldown.setCooldown(sender, "vk");
                         }
 
                         // Confirm to start the votekick
