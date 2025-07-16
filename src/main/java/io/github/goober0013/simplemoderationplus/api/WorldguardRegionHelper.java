@@ -41,13 +41,11 @@ public class WorldguardRegionHelper {
         String regionName
     ) {
         if (!enabled) {
-            SimpleModerationPlus.logger.info("disabled");
             return false;
         }
 
         // Null‐checks
         if (location == null || location.getWorld() == null) {
-            SimpleModerationPlus.logger.info("location null");
             return false;
         }
 
@@ -63,14 +61,12 @@ public class WorldguardRegionHelper {
             BukkitAdapter.adapt(location.getWorld())
         );
         if (manager == null) {
-            SimpleModerationPlus.logger.info("no manager");
             return false;
         }
 
         // Find the region by name
         ProtectedRegion region = manager.getRegion(regionName);
         if (region == null) {
-            SimpleModerationPlus.logger.info("no region");
             return false;
         }
 
