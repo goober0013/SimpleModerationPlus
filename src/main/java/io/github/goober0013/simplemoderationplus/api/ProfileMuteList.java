@@ -36,8 +36,8 @@ public class ProfileMuteList {
         mutesDir = SimpleModerationPlus.dataFolder
             .toPath()
             .resolve("playermutes");
-        SimpleModerationPlus.logger.severe(
-            MessageProperties.get("log.info.enable_jail_list")
+        SimpleModerationPlus.logger.info(
+            MessageProperties.get("log.info.enable_mute_list")
         );
         try {
             // ensure the folder exists
