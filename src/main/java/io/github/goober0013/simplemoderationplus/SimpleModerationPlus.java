@@ -23,6 +23,8 @@ import io.github.goober0013.simplemoderationplus.listeners.MuteListener;
 import io.papermc.paper.ban.BanListType;
 import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import io.papermc.paper.threadedregions.scheduler.AsyncScheduler;
+import io.papermc.paper.threadedregions.scheduler.GlobalRegionScheduler;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -34,7 +36,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitScheduler;
 
 public final class SimpleModerationPlus extends JavaPlugin {
 
@@ -43,9 +44,10 @@ public final class SimpleModerationPlus extends JavaPlugin {
     public static Server server;
     public static PluginManager pluginManager;
     public static ServicesManager servicesManager;
-    public static BukkitScheduler scheduler;
+    public static GlobalRegionScheduler scheduler;
     public static ProfileBanList banList;
     public static SimpleModerationPlus instance;
+    public static AsyncScheduler asyncScheduler;
 
     @Override
     public void onLoad() {
@@ -79,8 +81,9 @@ public final class SimpleModerationPlus extends JavaPlugin {
 
         pluginManager = server.getPluginManager();
         servicesManager = server.getServicesManager();
-        scheduler = server.getScheduler();
+        scheduler = server.getGlobalRegionScheduler();
         banList = Bukkit.getBanList(BanListType.PROFILE);
+        asyncScheduler = server.getAsyncScheduler();
 
         ProfilePermissions.load();
         ModerationLogger.load();

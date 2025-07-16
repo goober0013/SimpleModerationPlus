@@ -1,6 +1,7 @@
 package io.github.goober0013.simplemoderationplus.api;
 
 import io.github.goober0013.simplemoderationplus.SimpleModerationPlus;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,13 +9,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 
 /**
  * Manages vote‐kicks that expire in 1 minute,
@@ -66,13 +66,11 @@ public class VoteKickManager {
         activeVotes.put(targetId, vk);
 
         // schedule expiration
-        vk.task = new BukkitRunnable() {
-            @Override
-            public void run() {
-                expireVoteKick(targetId);
-            }
-        }
-            .runTaskLater(SimpleModerationPlus.instance, EXPIRATION_TICKS);
+        vk.task = Bukkit.getGlobalRegionScheduler().runDelayed(
+            SimpleModerationPlus.instance,
+            task -> expireVoteKick(targetId),
+            EXPIRATION_TICKS
+        );
 
         // notify listeners of start with initiator
         listeners.forEach(l -> l.onVoteKickStarted(initiator, target, reason));
@@ -195,7 +193,7 @@ public class VoteKickManager {
         final Set<String> voters = Collections.newSetFromMap(
             new ConcurrentHashMap<>()
         );
-        BukkitTask task;
+        ScheduledTask task;
 
         VoteKick(
             String targetId,

@@ -226,15 +226,15 @@ public class VoteKickCommand {
             return 0;
         }
 
-        SimpleModerationPlus.scheduler.runTaskAsynchronously(
+        SimpleModerationPlus.asyncScheduler.runNow(
             SimpleModerationPlus.instance,
-            () -> {
+            s -> {
                 final boolean exempt = ProfilePermissions.playerHas(
                     profile,
                     "simplemoderationplus.exempt"
                 );
 
-                SimpleModerationPlus.scheduler.runTask(
+                SimpleModerationPlus.scheduler.execute(
                     SimpleModerationPlus.instance,
                     () -> {
                         if (exempt) {

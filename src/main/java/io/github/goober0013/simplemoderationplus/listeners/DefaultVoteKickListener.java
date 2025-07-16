@@ -219,11 +219,11 @@ public class DefaultVoteKickListener implements VoteKickListener {
     @Override
     public final void onVoteKickExpired(OfflinePlayer targetPlayer) {
         final PlayerProfile target = targetPlayer.getPlayerProfile();
-        final Audience audience = audienceExcluding(target);
         final String reason = VoteKickManager.getReason(targetPlayer);
         final CommandSender initiator = VoteKickManager.getInitiator(
             targetPlayer
         );
+        final Audience audience = audienceExcluding(initiator, target);
 
         audience.sendMessage(
             MessageProperties.getRed(

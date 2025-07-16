@@ -1,0 +1,63 @@
+name: SimpleModerationPlus
+version: "3.2-m1.21.6"
+main: io.github.goober0013.simplemoderationplus.SimpleModerationPlus
+description: "Efficient, secure, versatile moderation"
+authors:
+  - goober0013
+website: "https://goober0013.github.io"
+api-version: "1.21.6"
+folia-supported: true
+
+# Optional integrations—will load your plugin if present
+softdepend:
+  - WorldEdit
+  - FastAsyncWorldEdit
+  - WorldGuard
+  - Vault
+
+permissions:
+  simplemoderationplus.ban:
+    description: "Allowed to ban players"
+    default: op
+  simplemoderationplus.unban:
+    description: "Allowed to unban players"
+    default: op
+  simplemoderationplus.mute:
+    description: "Allowed to mute players"
+    default: op
+  simplemoderationplus.unmute:
+    description: "Allowed to unmute players"
+    default: op
+  simplemoderationplus.warn:
+    description: "Allowed to warn players"
+    default: op
+  simplemoderationplus.kick:
+    description: "Allowed to kick players"
+    default: op
+  simplemoderationplus.jail:
+    description: "Allowed to jail players"
+    default: op
+  simplemoderationplus.unjail:
+    description: "Allowed to unjail players"
+    default: op
+  simplemoderationplus.setjail:
+    description: "Allowed to set the location of the jail"
+    default: op
+  simplemoderationplus.actions:
+    description: "Allowed to view actions regarding players"
+    default: op
+  simplemoderationplus.exempt:
+    description: "Exempt from moderation"
+    default: op
+  simplemoderationplus.bypassexempt:
+    description: "Bypass exempt"
+    default: op
+  simplemoderationplus.votekick:
+    description: "Allowed to start a votekick"
+    default: op
+  simplemoderationplus.votekick.vote:
+    description: "Allowed to vote in a votekick"
+    default: op
+  simplemoderationplus.votekick.cancel:
+    description: "Allowed to cancel ongoing votekicks"
+    default: op
