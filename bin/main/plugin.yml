@@ -1,5 +1,5 @@
 name: SimpleModerationPlus
-version: "3.2.1-m1.21.6"
+version: "3.2-m1.21.6"
 main: io.github.goober0013.simplemoderationplus.SimpleModerationPlus
 description: "Efficient, secure, versatile moderation"
 authors:

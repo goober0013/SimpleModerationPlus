@@ -125,7 +125,7 @@ public class JailListener implements Listener {
                         configFile,
                         "jail"
                     );
-                    player.teleport(jail);
+                    player.teleportAsync(jail);
                 } catch (IOException e) {
                     SimpleModerationPlus.logger.severe(
                         MessageProperties.get("log.error.ioexception")

@@ -284,7 +284,7 @@ public class JailCommand {
                                             configFile,
                                             "jail"
                                         );
-                                    online.teleport(jail);
+                                    online.teleportAsync(jail);
                                 } catch (IOException e) {
                                     SimpleModerationPlus.logger.severe(
                                         MessageProperties.get(
